@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>House Rental System</title>
+  <link href="styles.css" rel="stylesheet" />
+</head>
+<body>
+  <header>
+    <h1>🏠 House Rental System</h1>
+    <nav>
+      <button onclick="showPage('dashboard')">Dashboard</button>
+      <button onclick="showPage('apartments')">Apartments</button>
+      <button onclick="showPage('landlord')">Landlord</button>
+      <button onclick="showPage('tenants')">Tenants</button>
+      <button onclick="showPage('rent')">Rent</button>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Dashboard -->
+    <section id="dashboard" class="page">
+      <h2>Dashboard</h2>
+      <p>Total Tenants: <span id="tenantCount"></span></p>
+      <p>Occupied Apartments: <span id="occupiedCount"></span></p>
+      <p>Available Apartments: <span id="availableCount"></span></p>
+      <ul id="tenantList"></ul>
+    </section>
+
+    <!-- Apartments -->
+    <section id="apartments" class="page hidden">
+      <h2>Apartments</h2>
+      <div id="apartmentList"></div>
+    </section>
+
+    <!-- Landlord -->
+    <section id="landlord" class="page hidden">
+      <h2>Landlord</h2>
+      <form id="landlordForm">
+        <input type="text" placeholder="Name" name="name" required />
+        <input type="text" placeholder="Mobile" name="mobile" required />
+        <input type="text" placeholder="Apartment No." name="apartment" required />
+        <input type="text" placeholder="Address" name="address" required />
+        <input type="number" placeholder="Rent per month" name="rent" required />
+        <button type="submit">Add Landlord</button>
+      </form>
+      <table>
+        <thead>
+          <tr><th>Name</th><th>Mobile</th><th>Apt No.</th><th>Address</th><th>Rent</th></tr>
+        </thead>
+        <tbody id="landlordTable"></tbody>
+      </table>
+    </section>
+
+    <!-- Tenants -->
+    <section id="tenants" class="page hidden">
+      <h2>Tenants</h2>
+      <form id="tenantForm">
+        <input type="text" placeholder="Name" name="name" required />
+        <input type="text" placeholder="Mobile" name="mobile" required />
+        <select name="gender" required>
+          <option value="">Gender</option>
+          <option>Male</option>
+          <option>Female</option>
+        </select>
+        <input type="text" placeholder="Apartment No." name="apartment" required />
+        <button type="submit">Add Tenant</button>
+      </form>
+      <table>
+        <thead>
+          <tr><th>Name</th><th>Mobile</th><th>Gender</th><th>Apt No.</th></tr>
+        </thead>
+        <tbody id="tenantTable"></tbody>
+      </table>
+    </section>
+
+    <!-- Rent -->
+    <section id="rent" class="page hidden">
+      <h2>Rent Payment</h2>
+      <form id="rentForm">
+        <input type="text" placeholder="Tenant Name" name="name" required />
+        <input type="text" placeholder="Mobile" name="mobile" required />
+        <select name="gender" required>
+          <option value="">Gender</option>
+          <option>Male</option>
+          <option>Female</option>
+        </select>
+        <input type="text" placeholder="Apartment No." name="apartment" required />
+        <input type="number" placeholder="Amount" name="amount" required />
+        <input type="number" placeholder="Period (months)" name="months" required />
+        <button type="submit">Pay</button>
+      </form>
+      <table>
+        <thead>
+          <tr><th>Name</th><th>Mobile</th><th>Gender</th><th>Apt No.</th><th>Amount</th><th>Months</th></tr>
+        </thead>
+        <tbody id="rentTable"></tbody>
+      </table>
+    </section>
+  </main>
+
+  <footer>
+    <button onclick="resetDemoData()">Reset Demo Data</button>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
+   

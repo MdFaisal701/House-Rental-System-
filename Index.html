@@ -41,13 +41,19 @@
         <input type="text" placeholder="Name" name="name" required />
         <input type="text" placeholder="Mobile" name="mobile" required />
         <input type="text" placeholder="Apartment No." name="apartment" required />
-        <input type="text" placeholder="Address" name="address" required />
+        <textarea placeholder="Apartment Address" name="address" rows="3" required></textarea>
         <input type="number" placeholder="Rent per month" name="rent" required />
         <button type="submit">Add Landlord</button>
       </form>
       <table>
         <thead>
-          <tr><th>Name</th><th>Mobile</th><th>Apt No.</th><th>Address</th><th>Rent</th></tr>
+          <tr>
+            <th>Name</th>
+            <th>Mobile</th>
+            <th>Apt No.</th>
+            <th>Address</th>
+            <th>Rent</th>
+          </tr>
         </thead>
         <tbody id="landlordTable"></tbody>
       </table>
@@ -69,7 +75,12 @@
       </form>
       <table>
         <thead>
-          <tr><th>Name</th><th>Mobile</th><th>Gender</th><th>Apt No.</th></tr>
+          <tr>
+            <th>Name</th>
+            <th>Mobile</th>
+            <th>Gender</th>
+            <th>Apt No.</th>
+          </tr>
         </thead>
         <tbody id="tenantTable"></tbody>
       </table>
@@ -93,18 +104,24 @@
       </form>
       <table>
         <thead>
-          <tr><th>Name</th><th>Mobile</th><th>Gender</th><th>Apt No.</th><th>Amount</th><th>Months</th></tr>
+          <tr>
+            <th>Name</th>
+            <th>Mobile</th>
+            <th>Gender</th>
+            <th>Apt No.</th>
+            <th>Amount</th>
+            <th>Months</th>
+          </tr>
         </thead>
         <tbody id="rentTable"></tbody>
       </table>
     </section>
   </main>
 
-  <footer>
-    <button onclick="resetDemoData()">Reset Demo Data</button>
-  </footer>
-
   <script src="app.js"></script>
 </body>
 </html>
-   
+
+
+ 
+  

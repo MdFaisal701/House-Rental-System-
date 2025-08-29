@@ -1,4 +1,3 @@
-
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -9,18 +8,22 @@ struct Apartment {
     int rent;
     bool occupied;
 };
+
 struct Landlord {
     string name, mobile, apartmentNo, address;
     int rent;
 };
+
 struct Tenant {
     string name, mobile, gender, availability, apartmentNo;
 };
+
 struct Payment {
     string name, mobile, gender, apartmentNo, date;
     int amount, months;
 };
 
+// Get today's date in YYYY-MM-DD format
 string today() {
     time_t t = time(nullptr);
     tm *lt = localtime(&t);
@@ -29,48 +32,45 @@ string today() {
     return string(buf);
 }
 
-int main(){
-    vector<Apartment> apartments = {
+// Global vectors
+vector<Apartment> apartments;
+vector<Landlord> landlords;
+vector<Tenant> tenants;
+vector<Payment> payments;
+
+// Function declarations
+void showDashboard();
+void listApartments();
+void addApartment();
+void listLandlords();
+void addLandlord();
+void listTenants();
+void addTenant();
+void listPayments();
+void addPayment();
+
+int main() {
+    // Sample data
+    apartments = {
         {"101", 3, "Dhaka, Mirpur 1", 18000, false},
         {"102", 2, "Dhaka, Mirpur 2", 15000, true},
         {"103", 3, "Dhaka, Mirpur 3", 19000, false}
     };
-    vector<Landlord> landlords = {
+    landlords = {
         {"Rahim Uddin","01711111111","101","Dhaka, Mirpur 1",18000},
         {"Karim Ahmed","01722222222","102","Dhaka, Mirpur 2",15000}
     };
-    vector<Tenant> tenants = {
+    tenants = {
         {"Sumaiya","01633333333","Female","Assigned","102"},
         {"Faisal","01544444444","Male","Looking",""}
     };
-    vector<Payment> payments = {
+    payments = {
         {"Sumaiya","01633333333","Female","102",today(),15000,1}
     };
 
-    int occupied = count_if(apartments.begin(), apartments.end(),
-                            [](const Apartment&a){return a.occupied;});
-    cout << "=== Dashboard ===\n";
-    cout << "Total Apartments: " << apartments.size() << "\n";
-    cout << "Occupied: " << occupied << "\n";
-    cout << "Available: " << (apartments.size()-occupied) << "\n\n";
+    int choice;
+    do {
+        cout << "\n=== House Rental System ===\n";
+        cout << "1. Dashboard\n2. Apartments\n3. Landlords\n4. Tenants\n5. Rent Payments\n0. Exit\n";
 
-    cout << "Tenants:\n";
-    for(size_t i=0;i<tenants.size();++i){
-        auto&t=tenants[i];
-        cout << i+1 << ". " << t.name << " | " << t.mobile << " | " << t.gender
-             << " | Apt: " << (t.apartmentNo.empty()? "-" : t.apartmentNo) << "\n";
-    }
 
-    cout << "\n-- Record a sample payment --\n";
-    Payment p{"Faisal","01544444444","Male","103",today(),19000,1};
-    payments.push_back(p);
-    cout << "Added payment for " << p.name << " amount " << p.amount << " on " << p.date << "\n";
-
-    cout << "\nPayments list:\n";
-    for(size_t i=0;i<payments.size();++i){
-        auto&x=payments[i];
-        cout << i+1 << ". " << x.name << " | " << x.mobile << " | Apt " << x.apartmentNo
-             << " | " << x.amount << " | " << x.months << " month(s) | " << x.date << "\n";
-    }
-    return 0;
-}
